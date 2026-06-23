@@ -3,7 +3,8 @@ function addition( a, b ){
 }
 
 function onPageStarted(){
-    console.log( addition(10,5));
+    let resultat = addition(10,5); 
+    console.log(resultat);
 }
 
 // lance la fonction onPageStarted quand le document (page web)
