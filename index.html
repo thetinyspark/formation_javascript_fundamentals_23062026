@@ -1,64 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head> <!-- en tête nécessaires au fichier html-->
-        <!-- LES METADONNEES -->
-         <!-- 
-        une metadonnée est une donnée qui est nécéssairement associée à une autre donnée
-        au sens large du terme, çàd que la donnée à laquelle est associée la métadonnée 
-        peut être une information simple mais, par exemple, dans notre cas à nous, un 
-        document entier. 
-
-        Notre page HTML est un document, les metadonnées en HTML, servent à renseigner 
-        le navigateur pour lui expliquer comment interpréter le document, comment 
-        se comporter dans telle ou telle situation ou alors, juste apporter quelques 
-        renseignements supplémentaires (comme par exemple les données concernant le référencement).
-          -->
+    <head>
         <meta charset="UTF-8"> <!-- cette balise meta précise l'encodage des caractères -->
-
-        <!-- 
-        la balise ci dessous permet de préciser au navigateur comment se comporter 
-        au niveau du zoom et de l'affichage de base de la page. 
-         -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- La balise permet de définir le titre du document -->
         <title>Document</title>
     </head>
 
-    <!-- la balise body permet de contenir le corps du document -->
     <body>
-        <!-- 
-        la balise p, possède une certaine sémantique, un certain sens, elle est là pour accueillir 
-        des textes sous forme de paragraphe. La sémantique dans le cadre d'une page web est tout 
-        sauf superflue, son respect permet: 
-
-        - D'être mieux référencée par les moteurs de recherche
-        - De mieux structurer la page web pour les internautes mal ou non voyants
-         -->
-        <p>
-            La balise p pour paragraph permet de contenir du texte sous forme de paragraphes entiers.
-            Elle peut le faire sur plusieurs lignes au sein de l'éditeur, en revanche, une fois 
-            le contenu affiché dans le navigateur, les sauts de lignes ne sont pas retranscris. 
-        </p>
 
         <p>
-            Pour retranscrire un saut de ligne, il existe au moins 2 façons de faire: 
+            Premier TP : Créez une page web avec les balises que vous connaissez, afin de vous présenter. 
+            Les informations suivantes devront être présentes sur la page web: 
         </p>
 
-        <p>
-            -1) On utilise une nouvelle balise "p", ce n'est pas forcément pratique
-            à chaque fois, mais si l'on démarre un nouveau paragraphe, c'est la chose 
-            la plus juste à faire si l'on prend en compte la sémantique. 
-        </p>
+        <ul>
+           <li>Nom</li> 
+           <li>Prenom</li> 
+           <li>Age</li> 
+           <li>Sexe</li> 
+           <li>Profession</li> 
+           <li>Parfum de glace préféré</li> 
+        </ul>
 
-        <p>
-            -2) On peut utiliser une balise &lt;br /&gt; <br /> au milieu d'un paragraphe. 
-            Ce n'est pas non plus recommandé, mais parfois cela peut s'avérer utile. 
-        </p>
-
-        <!-- 
-        Le HTML est un langage de description de données, ce n'est pas un langage 
-        de programmation au sens strict du terme. 
-         -->
     </body>
 </html>
