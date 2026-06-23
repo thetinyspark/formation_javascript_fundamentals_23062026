@@ -2,9 +2,25 @@ function addition( a, b ){
     return a + b;
 }
 
+function multiplication( a, b ){
+    return a * b;
+}
+
+function division( a, b ){
+    if( b == 0)
+        return 0;
+    return a / b;
+}
+
+function soustraction( a, b ){
+    return a - b;
+}
+
 function onPageStarted(){
-    let resultat = addition(10,5); 
-    console.log(resultat);
+    // const resultatElement = document.getElementById("resultat");
+    const resultatElement = document.querySelector("#resultat");
+    const resultat = addition(10,5); 
+    resultatElement.innerHTML = resultat;
 }
 
 // lance la fonction onPageStarted quand le document (page web)
