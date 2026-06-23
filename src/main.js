@@ -29,5 +29,13 @@ console.log(element);
 // mais la plus simple est encore de modifier la propriété innerHTML 
 // d'une balise / d'un élément 
 
-
-element.innerHTML = "<h1>FORMATION JAVASCRIPT POUR: " + prenom + "</h1>";
+// ce format de chaîne de caractères s'appelle "template string"
+element.innerHTML = `
+<ul>
+    <li>Nom: ${nom}</li>
+    <li>Prénom: ${prenom}</li>
+    <li>Âge: ${age}</li>
+    <li>Sexe: ${sex}</li>
+    <li>Parfum de glace préféré: ${taste}</li>
+</ul>
+`;
