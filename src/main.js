@@ -1,45 +1,46 @@
+function displayProduct(container, product){
+    // container fait référence à une balise html
+    // que vous aurez crée programmatiquement à l'aide 
+    // de la fonction document.createElement();
+    // Vous devez avoir ajouté cette balise à la balise <body>
 
-function addition(a,b){
-    return a + b ;
+    // product fait référence à un des objets contenu dans le tableau
+    // de produit. 
+
+
+
+    // TODO : Editer le .innerHTML du container avec les infos du produit
 }
 
 function onPageStarted(){
-    const prices = [ 1039, 499, 269.99 ];
-    // retourne la longueur du tableau (le nombre d'éléments )
-    // console.log(prices.length); 
 
-    // ajoute un x éléments à la fin du tableau
-    prices.push(589);
-    prices.push(addition(10,5));
+    const products = [
+        {
+            name:"FF7 Rebirth", 
+            price: 15.99
+        }, 
+        {
+            name: "FF7 Remake", 
+            price: 9.99
+        }, 
+        {
+            name: "FF7 OG (97)", 
+            price: 7.99
+        }
+    ];
 
-    // retire le dernier élément du tableau
-    prices.pop();
+    // on va chercher à afficher le contenu de notre tableau 
+    // de produits sur notre page web
+    // Il nous faudra utiliser tout ce que l'on a vu aujourd'hui
 
-    // ajoute x éléments au début du tableau
-    prices.unshift(1,2,3,4);
-    
-    // supprime le premier élément du tableau
-    prices.shift();
-    
-    // les tableaux ne sont pas typés en Javascript, çàd qu'ils peuvent 
-    // contenir des éléments de différents types
-    // prices.push(true, "coucou");
-    // console.log(prices);
+    // TODO: boucler sur l'ensemble des produits à l'aide 
+    // d'une boucle for ou de la fonction forEach. 
 
+    // au sein de la boucle, créez un container programmatiquement
+    // puis ajoutez le à la balise body. 
 
-    // les boucles sont des structures de contrôle qui permettent 
-    // d'itérer (de répéter la même opération) un certain nombre 
-    // de fois en fonction d'une ou ou plusieurs conditions de sortie
-
-    let total = 0;
-    for( let i = 0; i < prices.length; i++){
-        // total = total + prices[i];
-        total += prices[i]; //  notation raccourcie de la ligne du dessus
-    }   
-
-    console.log("total HT:", total.toFixed(2),"€");
-    console.log("total TTC:", (total*1.2).toFixed(2),"€");
-
+    // Une fois cela fait, envoyez votre container et votre produit
+    // à la fonction displayProduct
 }
 
 window.onload = onPageStarted;
