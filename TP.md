@@ -1,7 +1,7 @@
-TP N°3
+TP N°4
 
-Modifiez la fonction displayProfile de la façon suivante: 
+- Créez les fonctions suivantes et appelez-les, envoyez le résultat de chacune de ces fonctions à la console
 
-- Elle doit prendre en paramètre un HTMLNode
-- Elle modifie le innerHTML du HTMLNode passé en paramètre
-- Le HTMLNode est ajouté à un container ( ici le body )
+- La fonction division
+- La fonction multiplication 
+- La fonction soustraction
