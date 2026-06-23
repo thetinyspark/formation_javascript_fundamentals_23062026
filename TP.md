@@ -1,10 +1,10 @@
-TP N°5
+TP N°6
 
-- Afficher le résultat des opérations suivantes au sein de l'élément 
-HTML qui porte l'identifiant "résultat". 
+- Déclarer un objet possédant les informations suivantes: 
 
-- Il faut le résultat de l'addition
-- Mais aussi celui de la soustraction
+- Nom <-- nom du produit
+- Prix <-- prix du produit
+- Stock <-- stock du produit
 
-BONUS: 
-    - ajouter les résultats des deux autres opérations
+Afficher les différentes informatons contenues dans l'objet 
+au sein du HTML de la balise possédant l'id = resultat.

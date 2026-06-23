@@ -1,38 +1,24 @@
-function addition( a, b ){
-    return a + b;
-}
+let name = "David";
+let name2 = 'Amandine';
+let name3 = `Stéphane`; 
 
-function multiplication( a, b ){
-    return a * b;
-}
 
-function division( a, b ){
-    if( b == 0)
-        return 0;
-    return a / b;
-}
+let age = 40.5; 
+let isAdult = false; //  true ou false
 
-function soustraction( a, b ){
-    return a - b;
-}
+let obj = new Object();
+obj.name = "Marc-Antoine";
+obj.age = 25;
+obj.isAdult = true;
 
-function onPageStarted(){
-    // const resultatElement = document.getElementById("resultat");
-    const resultatElement = document.querySelector("#resultat");
-    const resultat1 = addition(10,5); // 15
-    const resultat2 = soustraction(10,5); // 5
-    const resultat3 = multiplication(10,5);  // 50
-    const resultat4 = division(10,5);  // 2
-    resultatElement.innerHTML = `
-        ${resultat1}
-        ${resultat2}
-        ${resultat3}
-        ${resultat4}
-    `; 
-}
+// permet d'effacer une entrée au sein de l'objet
+delete obj.name;
 
-// lance la fonction onPageStarted quand le document (page web)
-// et tous les documents associés (image, sons, vidéos etc ...)
-// sont téléchargés, évalués par le navigateur et disponible 
-// à l'édition / manipulation
-window.onload = onPageStarted;
+
+// il existe une autre façon de créer un objet, c'est la notation JSON
+// Javascript Object Notation
+let obj2 = {
+    name: "Manon", 
+    age: 22, 
+    isAdult: true
+};
