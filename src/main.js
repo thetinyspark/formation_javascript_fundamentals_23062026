@@ -1,24 +1,21 @@
-let name = "David";
-let name2 = 'Amandine';
-let name3 = `Stéphane`; 
+function displayProduct(container, product){
+    container.innerHTML = `
+    Nom: ${product.name} <br />
+    Prix: ${product.price}€ <br />
+    Stock: ${product.stock} <br />
+    `;
+}
 
+function onPageStarted(){
+    const product = {
+        name: "Steam Machine", 
+        price: 1039, 
+        stock: 1000000
+    }; 
 
-let age = 40.5; 
-let isAdult = false; //  true ou false
+    const container = document.querySelector("#product1");
 
-let obj = new Object();
-obj.name = "Marc-Antoine";
-obj.age = 25;
-obj.isAdult = true;
+    displayProduct(container, product);
+}
 
-// permet d'effacer une entrée au sein de l'objet
-delete obj.name;
-
-
-// il existe une autre façon de créer un objet, c'est la notation JSON
-// Javascript Object Notation
-let obj2 = {
-    name: "Manon", 
-    age: 22, 
-    isAdult: true
-};
+window.onload = onPageStarted;
