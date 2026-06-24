@@ -1,15 +1,8 @@
 function displayProduct(container, product){
-    // container fait référence à une balise html
-    // que vous aurez crée programmatiquement à l'aide 
-    // de la fonction document.createElement();
-    // Vous devez avoir ajouté cette balise à la balise <body>
-
-    // product fait référence à un des objets contenu dans le tableau
-    // de produit. 
-
-
-
-    // TODO : Editer le .innerHTML du container avec les infos du produit
+    container.innerHTML = `
+    <h2>${product.name}</h2>
+    <p>Prix: ${product.price}€</p>
+    `
 }
 
 function onPageStarted(){
@@ -29,6 +22,16 @@ function onPageStarted(){
         }
     ];
 
+
+    const baliseBody = document.querySelector("body");
+    for( let i = 0; i < products.length; i++){
+        const baliseHTMLProduct = document.createElement("div"); 
+        baliseHTMLProduct.setAttribute("class","product");
+        
+        baliseBody.appendChild(baliseHTMLProduct); 
+        displayProduct(baliseHTMLProduct, products[i]);
+    }
+
     // on va chercher à afficher le contenu de notre tableau 
     // de produits sur notre page web
     // Il nous faudra utiliser tout ce que l'on a vu aujourd'hui
@@ -37,10 +40,13 @@ function onPageStarted(){
     // d'une boucle for ou de la fonction forEach. 
 
     // au sein de la boucle, créez un container programmatiquement
-    // puis ajoutez le à la balise body. 
+    // puis ajoutez le à la balise body. ( à l'aide de la fonction document.createElement)
+    // ex: créer une div = document.createElement("div")
+    // ex: créer une p = document.createElement("p")
 
     // Une fois cela fait, envoyez votre container et votre produit
     // à la fonction displayProduct
+    // displayProduct(div, product)
 }
 
 window.onload = onPageStarted;
