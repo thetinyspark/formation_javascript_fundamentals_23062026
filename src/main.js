@@ -1,7 +1,27 @@
 var products = []; // variable globale contenant les produits
 var id = 1;
 
-function displayProduct(container, product){
+function renderProducts(){
+    removeAllProductsFromHTML();
+    for( let i = 0; i < products.length; i++){
+        addProduct(products[i]);
+    }
+}
+
+function removeAllProductsFromHTML(){
+    // on va chercher nos éléments html qui possèdent la classe css 'product'
+    const elements = document.querySelectorAll('.product');
+    for( let i = 0; i < elements.length; i++){
+        const current = elements[i]; 
+        current.remove();
+    }
+}
+
+function addProduct(product){
+    const container = document.createElement("div"); 
+    container.setAttribute("class","product");
+    document.body.appendChild(container);
+
     container.innerHTML = `
     <h2>${product.name}</h2>
     <p>Prix: ${product.price}€</p>
@@ -34,20 +54,13 @@ function getRandomPrice(){
 function onBtnClicked(event){
     const eventType = event.type;
     const target = event.target;
-
-    // ici, on va construire un produit au hasard à chaque fois
-    // vous pouvez ajouter au tableau global de produits 
-    // les produits suivants: 
-
     const productInfo = {
         name: getUniqName(), 
         price: getRandomPrice()
     };
-    
-    const div = document.createElement("div"); 
-    const body = document.querySelector("body");
-    body.appendChild(div);
-    displayProduct(div, productInfo);
+
+    products.push(productInfo);
+    renderProducts();
 }
 
 function onPageStarted(){
