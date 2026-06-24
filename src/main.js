@@ -1,6 +1,8 @@
 var products = []; // variable globale contenant les produits
 var id = 1;
 
+
+
 function renderProducts(){
     removeAllProductsFromHTML();
     for( let i = 0; i < products.length; i++){
@@ -19,13 +21,17 @@ function removeAllProductsFromHTML(){
 
 function addProduct(product){
     const container = document.createElement("div"); 
+    const removeBtn = document.createElement("button");
     container.setAttribute("class","product");
     document.body.appendChild(container);
+
 
     container.innerHTML = `
     <h2>${product.name}</h2>
     <p>Prix: ${product.price}€</p>
     `;
+
+    container.appendChild(removeBtn);
 }
 
 function getUniqName(){
