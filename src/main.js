@@ -1,4 +1,5 @@
 var products = []; // variable globale contenant les produits
+var id = 1;
 
 function displayProduct(container, product){
     container.innerHTML = `
@@ -7,12 +8,27 @@ function displayProduct(container, product){
     `;
 }
 
+function getUniqName(){
+    const idUniqProduit = id;
+    id++;
+
+    return "product_"+idUniqProduit;
+}
+
 function getRandomPrice(){
     // retourne un nombre au hasard entre 0 et 1
     const rand = Math.random();
+    const num = rand * 1000;
+
+    // attention, toFixed transforme le nombre en chaine de caractère (string)
+    const numWith2Decimals = num.toFixed(2) 
+
+    // pour retransformer notre chaîne en nombre on utilise parseFloat
+    const num2DigitsFloat = parseFloat(numWith2Decimals);
 
     // Math.round permet d'arrondir un nombre à virgule
-    return Math.round( rand * 1000 );
+    // return Math.round( num2DigitsFloat );
+    return num2DigitsFloat;
 }
 
 function onBtnClicked(event){
@@ -23,12 +39,15 @@ function onBtnClicked(event){
     // vous pouvez ajouter au tableau global de produits 
     // les produits suivants: 
 
-    // {
-    //     name: produit_<numero_du_produit>, 
-    //     price: <random_price>
-    // }
-
-    // Puis ensuite, il faudra tous les afficher à nouveau
+    const productInfo = {
+        name: getUniqName(), 
+        price: getRandomPrice()
+    };
+    
+    const div = document.createElement("div"); 
+    const body = document.querySelector("body");
+    body.appendChild(div);
+    displayProduct(div, productInfo);
 }
 
 function onPageStarted(){
