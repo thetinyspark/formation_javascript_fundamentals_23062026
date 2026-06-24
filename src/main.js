@@ -2,6 +2,30 @@ var products = []; // variable globale contenant les produits
 var id = 1;
 
 
+function onRemoveClick(event){
+    const target = event.target;
+    // on nettoie l'écouteur d'évènement avant de supprimer l'élement du HTML
+    // cela de nettoyer la mémoire. 
+    target.removeEventListener("click", onRemoveClick);
+
+    // la fonction filter des objets de type tableaux permet de renvoyer une version filtrée
+    // du tableau en question. 
+    products = products.filter(
+        // pour chacun des éléments du tableau...
+        function(currentProduct){
+
+            // si on renvoie true alors l'élément est conservé
+            if( currentProduct.id != target.id){
+                return true;
+            }
+            else{
+                // sinon il est filtré
+                return false;
+            }
+        }
+    );
+    renderProducts();
+}
 
 function renderProducts(){
     removeAllProductsFromHTML();
@@ -15,6 +39,11 @@ function removeAllProductsFromHTML(){
     const elements = document.querySelectorAll('.product');
     for( let i = 0; i < elements.length; i++){
         const current = elements[i]; 
+
+        // ici le remove fonctionne parce que l'élément 
+        // est un balise html, le remove signifie que l'on 
+        // enlève la balise du DOM / document HTML
+        // cela n'a rien à voir avec un éventuel tableau de données
         current.remove();
     }
 }
@@ -25,6 +54,9 @@ function addProduct(product){
     container.setAttribute("class","product");
     document.body.appendChild(container);
 
+    removeBtn.innerHTML = "X";
+    removeBtn.addEventListener("click", onRemoveClick);
+    removeBtn.setAttribute("id", product.id);
 
     container.innerHTML = `
     <h2>${product.name}</h2>
@@ -61,6 +93,7 @@ function onBtnClicked(event){
     const eventType = event.type;
     const target = event.target;
     const productInfo = {
+        id: id,
         name: getUniqName(), 
         price: getRandomPrice()
     };

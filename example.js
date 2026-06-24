@@ -6,6 +6,8 @@ var tab = [1000,5000,789,4,6,87,410];
 // pour cela on emploie la fonction indexOf qui renvoie soit la position
 // de l'élément recherché au sein du tableau soit -1 si l'élément n'est pas 
 // dans la tableau
+
+/*
 const position = tab.indexOf(789);
 
 // si la position existe
@@ -17,3 +19,6 @@ if( position > -1){
 }
 
 console.log(tab);
+*/
+
+tab.pop();
