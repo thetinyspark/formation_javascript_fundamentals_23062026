@@ -1,7 +1,7 @@
-TP N°8
+TP N°9
 
-    - Créer un début d'affichage de produits à partir des instructions
-    contenues dans le fichier main.js
+    - Créer un nouveau produit à chaque click sur le bouton
+    puis afficher l'entièreté des produits à chaque fois.
 
 
 https://docadmin.orsys.fr
