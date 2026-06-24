@@ -1,39 +1,26 @@
-function onPageStarted(){
-    // l'appel à window.fetch permet d'aller chercher des données 
-    // dans un fichier / une url distante
+// ici on décrit un modèle de conception pour un type de donnée
+// personnalisé qui répond au nom de Heroe. 
 
-    // fetch renvoie un objet de type Promise, qui standardise la façon 
-    // de récupérer des données de façon asynchrone (pas instantanée)
-    // quand on obtient la réponse voulue alors la fonction contenue 
-    // dans then est éxécutée, sinon la fonction contenue dans catch l'est
-    window.fetch("./data/products.json").then(
-        function(response){
+// Ce modèle de conception est nommé une "classe" (rien à voir avec les classes CSS)
+// À chaque fois que l'on souhaite fabriquer un nouveau Heroe, ce modèle, cette classe
+// est utilisé pour construire le nouveau heroe, c'est un peu comme un plan IKEA
 
-            // ici on obtient une réponse mais elle a besoin 
-            // d'être décryptée par le navigateur, on appelle 
-            // la fonction response.json() qui prend un peu de temps
-            // et qui nous renvoie la donnée lorsqu'elle est disponible
-            // c'est aussi une promesse/promise.
-            response.json().then(
-                function(data){
+// la classe, c'est plan, le modèle, le héros, c'est le produit
+class Heroe{
+    constructor(power, costume){
+        this.power = power; 
+        this.costume = costume;
+    }
 
-                    // et là on a le contenu de notre fichier json
-                    // (notre tableau de produits)
-                    console.log(data);
-                }
-            )
-        }
-    ).catch(
-        function(error){
-            console.log(error);
-        }
-    );
+    fightTheCrime(){
+        // tabasse les méchants, sauve les animaux et les enfants, pose pour la photo
+    }
 }
 
-window.onload = onPageStarted;
+// mage et conan sont des objets de type Heroe
+// construits à partir de la classe Heroe
+// on dit aussi que ce sont des instances de Heroe
+const mage = new Heroe("Faire de la magie", "Robe");
+const conan = new Heroe("Taper","Tout nu");
 
-// installer node js sur sa machine à l'adresse https://nodejs.org/en
-// ensuite, ouvrir une ligne de commande (il y en a dans vscode)
-// et tapez la commande suivante 
-
-// npm install -g http-server
+console.log(mage, conan);
