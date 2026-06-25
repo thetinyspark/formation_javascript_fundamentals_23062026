@@ -9,15 +9,8 @@ class Product{
         return this.price;
     }
 
-    // on peut donner à un paramètre une valeur par défaut
-    // toutefois tous les paramètres qui le suivront devront
-    // eux aussi avoir une valeur par défaut
     getPriceTTC(param_tva = 20){
         return this.price + ( this.price / 100 * param_tva );
-    }
-
-    getPriceTTCMinusCoupon(coupon, param_tva = 20){
-        return (this.price + ( this.price / 100 * param_tva ))-coupon;
     }
 }
 
@@ -25,6 +18,25 @@ class Product{
 class Cart{
     constructor(){
         this.products = [];
+    }
+
+    getTotalTTC(param_tva=20){
+        // je déclare une variable nommée total
+        let total = 0;
+
+        // pour chaque produit au sein du tableau de produits ...
+        this.products.forEach(
+
+            // j'éxécute la fonction suivante qui s'applique à chaque produit
+            (currentProduct)=>{
+
+                // j'ajoute à la variable nommée total, le prix TTC de mon produit en cours
+                total += currentProduct.getPriceTTC(param_tva);
+            }
+        );
+
+        // retourne le résultat
+        return total;
     }
 
     getTotalHT(){
@@ -91,3 +103,4 @@ console.log(panier.getProducts());
 
 console.log(panier.getProducts());
 console.log(panier.getTotalHT());
+console.log(panier.getTotalTTC(10));
