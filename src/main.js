@@ -14,7 +14,6 @@ class Product{
     }
 }
 
-
 class Cart{
     constructor(){
         this.products = [];
@@ -87,20 +86,69 @@ class Cart{
     }
 }
 
-const product1 = new Product(1,"Clair Obscur Expedition 33", 20);
-const product2 = new Product(2,"Zelda Ocarina Of Time", 50);
-const product3 = new Product(3,"Zelda Wind Waker", 30);
+// VisualCart reprend toutes les fonctionnalités de Cart
+class VisualCart extends Cart{
+    render(){
+        // on nettoie le body
+        document.body.innerHTML = "";
 
-const panier = new Cart();
+        // puis on boucle sur l'ensemble des produits
+        const products = this.getProducts(); 
+        for( let i = 0; i < products.length; i++){
 
-panier.addProduct(product1);
-panier.addProduct(product2);
-panier.addProduct(product3);
+            // on crée une div
+            const currentProduct = products[i];
+            const div = document.createElement("div"); 
+
+            // on ajoute les informations du produit à la div
+            div.innerHTML = `
+                <h2>${currentProduct.name}</h2>
+                <p>Price: ${currentProduct.price}</p>
+            `;
+
+            // on ajoute la classe CSS "product" à notre div
+            div.setAttribute("class","product");
+
+            // puis on ajoute la div à <body>
+            document.body.appendChild(div);
+        }
+    }
+
+    // réécrire addProduct
+    addProduct(product){
+        // ici on réutilise le code de la classe Cart 
+        // pour continuer de bénéficer de ses fonctionnalités
+        super.addProduct(product);
+
+        // et on ajoute notre comportement spécifique à VisualCart ici
+        this.render();
+    }
+
+    // réécrire addProduct
+    removeProduct(product){
+        // ici on réutilise le code de la classe Cart 
+        // pour continuer de bénéficer de ses fonctionnalités
+        super.removeProduct(product);
+
+        // et on ajoute notre comportement spécifique à VisualCart ici
+        this.render();
+    }
+}
 
 
-panier.removeProduct(product2);
-console.log(panier.getProducts());
 
-console.log(panier.getProducts());
-console.log(panier.getTotalHT());
-console.log(panier.getTotalTTC(10));
+function start(){
+    window.removeEventListener("load",start);
+    const product1 = new Product(1,"Clair Obscur Expedition 33", 20);
+    const product2 = new Product(2,"Zelda Ocarina Of Time", 50);
+    const product3 = new Product(3,"Zelda Wind Waker", 30);
+    
+    const panier = new VisualCart();
+    
+    panier.addProduct(product1);
+    panier.addProduct(product2);
+    panier.addProduct(product3);
+    panier.removeProduct(product2);
+}
+
+window.addEventListener("load",start);
