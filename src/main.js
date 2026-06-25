@@ -27,6 +27,25 @@ class Cart{
         this.products = [];
     }
 
+    getTotalHT(){
+        // je déclare une variable nommée total
+        let total = 0;
+
+        // pour chaque produit au sein du tableau de produits ...
+        this.products.forEach(
+
+            // j'éxécute la fonction suivante qui s'applique à chaque produit
+            (currentProduct)=>{
+
+                // j'ajoute à la variable nommée total, le prix HT de mon produit en cours
+                total += currentProduct.getPriceHT();
+            }
+        );
+
+        // retourne le résultat
+        return total;
+    }
+
     addProduct(product){
         this.products.push(product);
     }
@@ -56,21 +75,19 @@ class Cart{
     }
 }
 
-const product1 = new Product(1,"Clair Obscur Expedition 33", 19.99);
-const product2 = new Product(2,"Zelda Ocarina Of Time", 49.99);
-const product3 = new Product(3,"Zelda Wind Waker", 29.99);
+const product1 = new Product(1,"Clair Obscur Expedition 33", 20);
+const product2 = new Product(2,"Zelda Ocarina Of Time", 50);
+const product3 = new Product(3,"Zelda Wind Waker", 30);
 
 const panier = new Cart();
 
 panier.addProduct(product1);
-panier.addProduct(product1);
 panier.addProduct(product2);
-panier.addProduct(product2);
-panier.addProduct(product3);
 panier.addProduct(product3);
 
-console.log(panier.getProducts());
 
 panier.removeProduct(product2);
+console.log(panier.getProducts());
 
 console.log(panier.getProducts());
+console.log(panier.getTotalHT());

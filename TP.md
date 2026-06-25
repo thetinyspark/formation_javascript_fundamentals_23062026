@@ -1,8 +1,7 @@
-TP N°15
+TP N°16
 
-    Dans la classe Cart (fichier main.js), faites-en sorte 
-    de supprimer le produit passé en paramètre du tableau 
-    de produits "this.products"
+    Ajoutez une fonctionnalité getTotalTTC sur la classe Cart. 
+    Attention, la TVA doit être paramétrable.
 
 
 https://docadmin.orsys.fr
