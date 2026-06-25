@@ -84,10 +84,35 @@ class Cart{
         )
     
     }
+
+    removeProductById(id){
+
+        /*solution avec filter */
+        this.products = this.products.filter( 
+            // fonction fléchée
+            (currentProduct)=>{
+                if( currentProduct.id == id)
+                    return false;
+                
+                return true;
+            }
+        )
+    
+    }
 }
 
 // VisualCart reprend toutes les fonctionnalités de Cart
 class VisualCart extends Cart{
+    constructor(){
+        super();
+        this.init();
+    }
+
+    init(){
+        // attrape tous les clicks des balises contenues au sein de body
+        document.body.addEventListener("click", this.clickHandler, true);
+    }
+
     render(){
         // on nettoie le body
         document.body.innerHTML = "";
@@ -104,6 +129,7 @@ class VisualCart extends Cart{
             div.innerHTML = `
                 <h2>${currentProduct.name}</h2>
                 <p>Price: ${currentProduct.price}</p>
+                <button id="product_${currentProduct.id}">X</button>
             `;
 
             // on ajoute la classe CSS "product" à notre div
@@ -122,6 +148,21 @@ class VisualCart extends Cart{
         document.body.appendChild(total);
     }
 
+    // une fonction fléchée garde toujours le bon contexte d'éxécution this
+    clickHandler = (event)=>{
+        // si la target possède un identifiant
+        if( event.target.id ){
+            // si cet identifiant contient le sous chaîne de caractère product_
+            if( event.target.id.includes("product_")){
+                // alors on enlève la sous chaîne de l'id et on transforme le résultat en entier
+                const id = parseInt( event.target.id.replace("product_","") );
+
+                // ainsi on récupère l'identifiant du produit à supprimer
+                this.removeProductById(id);
+            }
+        }
+    };
+
     // réécrire addProduct
     addProduct(product){
         // ici on réutilise le code de la classe Cart 
@@ -139,6 +180,12 @@ class VisualCart extends Cart{
         super.removeProduct(product);
 
         // et on ajoute notre comportement spécifique à VisualCart ici
+        this.render();
+    }
+
+    // réécrire addProduct
+    removeProductById(id){
+        super.removeProductById(id);
         this.render();
     }
 }
