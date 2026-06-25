@@ -17,6 +17,7 @@ class Product{
 class Cart{
     constructor(){
         this.products = [];
+        this.load();
     }
 
     getTotalTTC(param_tva=20){
@@ -59,6 +60,7 @@ class Cart{
 
     addProduct(product){
         this.products.push(product);
+        this.save();
     }
 
     getProducts(){
@@ -81,8 +83,9 @@ class Cart{
                 
                 return true;
             }
-        )
-    
+        ); 
+
+        this.save();
     }
 
     removeProductById(id){
@@ -98,6 +101,22 @@ class Cart{
             }
         )
     
+    }
+
+    save(){
+        localStorage.setItem("cart", JSON.stringify(this.getProducts()));
+    }
+
+    load(){
+        // si getItem renvoie null ou undefined alors la valeur de data
+        // correspond à une chaîne de caractères au format JSON qui symbolise un tableau vide.
+        const data = localStorage.getItem("cart") || '[]';
+        const infos = JSON.parse(data);
+        infos.forEach( 
+            (currentInfo)=>{
+                this.products.push(new Product(currentInfo.id, currentInfo.name, currentInfo.price));
+            }
+        );
     }
 }
 
@@ -199,21 +218,28 @@ function addToCart(){
     // dans les champs de formulaire. 
 
     // ici on récupère l'id du nouveau produit
-    const inputId = document.getElementById("productId").value;
+    const id = document.getElementById("productId").value;
 
     // ici on récupère le nom du nouveau produit
-    // TODO
+    const name = document.getElementById("productName").value;
 
     // ici on récupère le prix du nouveau produit
-    // TODO
+    const price = document.getElementById("productPrice").value;
 
     // et enfin on crée le nouveau produit à partir des informations 
     // récupérées puis on l'ajoute au panier. 
+    const product = new Product( 
+        parseInt(id),
+        name,
+        parseFloat(price)
+    ); 
+    panier.addProduct(product);
 }
 
 function start(){
     window.removeEventListener("load",start);
     panier = new VisualCart(document.querySelector("#cart"));
+    panier.render();
     const btn = document.getElementById("createProductBtn"); 
     btn.addEventListener("click",addToCart);
 }
