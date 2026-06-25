@@ -103,19 +103,20 @@ class Cart{
 
 // VisualCart reprend toutes les fonctionnalités de Cart
 class VisualCart extends Cart{
-    constructor(){
+    constructor(param_container){
         super();
+        this.container = param_container;
         this.init();
     }
 
     init(){
         // attrape tous les clicks des balises contenues au sein de body
-        document.body.addEventListener("click", this.clickHandler, true);
+        this.container.addEventListener("click", this.clickHandler, true);
     }
 
     render(){
         // on nettoie le body
-        document.body.innerHTML = "";
+        this.container.innerHTML = "";
 
         // puis on boucle sur l'ensemble des produits
         const products = this.getProducts(); 
@@ -136,7 +137,7 @@ class VisualCart extends Cart{
             div.setAttribute("class","product");
 
             // puis on ajoute la div à <body>
-            document.body.appendChild(div);
+            this.container.appendChild(div);
         }
 
         const total = document.createElement("div");
@@ -145,14 +146,14 @@ class VisualCart extends Cart{
         <p>Total TTC: ${this.getTotalTTC()}€</p>
         `;
 
-        document.body.appendChild(total);
+        this.container.appendChild(total);
     }
 
     // une fonction fléchée garde toujours le bon contexte d'éxécution this
     clickHandler = (event)=>{
         // si la target possède un identifiant
         if( event.target.id ){
-            // si cet identifiant contient le sous chaîne de caractère product_
+            // si cet identifiant contient la sous chaîne de caractères product_
             if( event.target.id.includes("product_")){
                 // alors on enlève la sous chaîne de l'id et on transforme le résultat en entier
                 const id = parseInt( event.target.id.replace("product_","") );
@@ -191,19 +192,30 @@ class VisualCart extends Cart{
 }
 
 
+var panier = null;
+
+function addToCart(){
+    // on veut créer un nouveau produit on doit donc récupérer les valeurs contenues 
+    // dans les champs de formulaire. 
+
+    // ici on récupère l'id du nouveau produit
+    const inputId = document.getElementById("productId").value;
+
+    // ici on récupère le nom du nouveau produit
+    // TODO
+
+    // ici on récupère le prix du nouveau produit
+    // TODO
+
+    // et enfin on crée le nouveau produit à partir des informations 
+    // récupérées puis on l'ajoute au panier. 
+}
 
 function start(){
     window.removeEventListener("load",start);
-    const product1 = new Product(1,"Clair Obscur Expedition 33", 20);
-    const product2 = new Product(2,"Zelda Ocarina Of Time", 50);
-    const product3 = new Product(3,"Zelda Wind Waker", 30);
-    
-    const panier = new VisualCart();
-    
-    panier.addProduct(product1);
-    panier.addProduct(product2);
-    panier.addProduct(product3);
-    panier.removeProduct(product2);
+    panier = new VisualCart(document.querySelector("#cart"));
+    const btn = document.getElementById("createProductBtn"); 
+    btn.addEventListener("click",addToCart);
 }
 
 window.addEventListener("load",start);
