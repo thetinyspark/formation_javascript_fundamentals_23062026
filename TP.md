@@ -1,14 +1,10 @@
-TP N°19
+TP N°20
 
-    Créez 3 medias queries et les règles css associées pour le formulaire et les produits 
-    pour les résolutions suivantes: 
+    Lorsqu'on clique sur le bouton CREATE, ajoutez au button 
+    la classe CSS "fiesta". 
 
-
-    0-480px mobile
-    481-1024px tablette
-    1024px - infini desktop
-
-    Soyez imaginatifs, le plus important étant de bien distinguer les 3 types d'affichage
+    La classe fiesta appliquera une animation du même nom, 
+    qui permet de secouer le bouton de droite à gauche pendant 1s
 
 
 
