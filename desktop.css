@@ -1,0 +1,21 @@
+@media screen and (min-width:1025px){
+    
+    body{
+        /* base 16 / hexadécimale */
+        background-color: rgb(203, 156, 0);
+        color: azure;
+    }    
+    
+    label{
+        width: 200px;
+        font-size: 18px;
+        display: inline-block;
+    }
+    
+    .product{
+        background-color: white;
+        color: black; 
+        font-size: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

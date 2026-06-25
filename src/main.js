@@ -89,7 +89,6 @@ class Cart{
     }
 
     removeProductById(id){
-
         /*solution avec filter */
         this.products = this.products.filter( 
             // fonction fléchée
@@ -99,8 +98,9 @@ class Cart{
                 
                 return true;
             }
-        )
-    
+        );
+
+        this.save();
     }
 
     save(){
