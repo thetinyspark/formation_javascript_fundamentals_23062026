@@ -1,11 +1,8 @@
-TP N°14
+TP N°15
 
-    Créez un objet de type Car avec les propriétés suivantes: 
-
-    - Marque
-    - Couleur
-    - Un prix
-    - Une fonctionnalité nommée "move" et qui affiche "vroum" dans la console
+    Dans la classe Cart (fichier main.js), faites-en sorte 
+    de supprimer le produit passé en paramètre du tableau 
+    de produits "this.products"
 
 
 https://docadmin.orsys.fr
