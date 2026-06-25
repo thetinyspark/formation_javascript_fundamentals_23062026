@@ -55,12 +55,24 @@ label {
 
 /*les transitions CSS3 permettent des transitions simples d'un état vers un autre*/
 
-.invisible{
-    opacity: 0;    
-}
-
 .fadeIn{
-    transition-property: all;
+    animation-name: appear;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    /* transition-property: all;
     transition-duration: 1s;
-    opacity: 1;
+    opacity: 1; */
+} 
+
+@keyframes appear{
+    
+    0%{
+        opacity: 0;
+        background-color: orange;
+    } 
+    100%{
+        opacity: 1;
+        background-color: white;
+    }
 }

@@ -153,18 +153,10 @@ class VisualCart extends Cart{
             `;
 
             // on ajoute la classe CSS "product" à notre div
-            div.setAttribute("class","product invisible");
+            div.setAttribute("class","product fadeIn");
 
             // puis on ajoute la div à <body>
             this.container.appendChild(div);
-
-            setTimeout(
-                ()=>{
-                    // déclenche la transition au bout de 100ms
-                    div.setAttribute("class", "product fadeIn");
-                }, 
-                100
-            );
         }
 
         const total = document.createElement("div");
