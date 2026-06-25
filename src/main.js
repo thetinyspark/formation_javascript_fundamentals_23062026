@@ -112,6 +112,14 @@ class VisualCart extends Cart{
             // puis on ajoute la div à <body>
             document.body.appendChild(div);
         }
+
+        const total = document.createElement("div");
+        total.innerHTML = `
+        <p>Total HT: ${this.getTotalHT()}€</p>
+        <p>Total TTC: ${this.getTotalTTC()}€</p>
+        `;
+
+        document.body.appendChild(total);
     }
 
     // réécrire addProduct
